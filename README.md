@@ -4,9 +4,9 @@ This is an demonstration of using custom collection view layout (not a flow layo
 
 In a custom collection view layout, you simply have to specify:
 
-- The collection view's contentSize;
+- The collection view's `contentSize`;
 - The center and size of the individual element cells in the collection view; and
-- Identify what elements are visible for any given CGRect.
+- Identify what elements are visible for any given `CGRect`.
 
 See `PeriodicTableLayout.swift` for an example. Note, you can set `fitTableToCollectionView` if you want it to fit the periodic table within the collection view. Set it to `false` if you want to have fixed sized cells and allow you to scroll around.
 
