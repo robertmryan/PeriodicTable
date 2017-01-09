@@ -8,18 +8,35 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UICollectionViewController {
+    
+    var elements: [Element]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        loadElements()
+        collectionView?.collectionViewLayout = PeriodicTableLayout()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    private func loadElements() {
+        let fileURL = Bundle.main.url(forResource: "Elements", withExtension: "json")!
+        let data = try! Data(contentsOf: fileURL)
+        let json = try! JSONSerialization.jsonObject(with: data) as! [[String: Any]]
+        elements = json.map { Element(dictionary: $0) }
     }
-
-
 }
 
+extension ViewController {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return elements.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ElementCell", for: indexPath) as! ElementCell
+        let element = elements[indexPath.row]
+        cell.numberLabel.text = "\(element.number)"
+        cell.symbolLabel.text = element.symbol
+        return cell
+    }
+}

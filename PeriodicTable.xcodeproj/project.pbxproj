@@ -12,6 +12,10 @@
 		83F2CA781E239C87008AC9CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83F2CA761E239C87008AC9CD /* Main.storyboard */; };
 		83F2CA7A1E239C87008AC9CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83F2CA791E239C87008AC9CD /* Assets.xcassets */; };
 		83F2CA7D1E239C87008AC9CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83F2CA7B1E239C87008AC9CD /* LaunchScreen.storyboard */; };
+		83F2CA851E239CCD008AC9CD /* PeriodicTableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2CA841E239CCD008AC9CD /* PeriodicTableLayout.swift */; };
+		83F2CA871E239CEE008AC9CD /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2CA861E239CEE008AC9CD /* Element.swift */; };
+		83F2CA891E239D1C008AC9CD /* ElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2CA881E239D1C008AC9CD /* ElementCell.swift */; };
+		83F2CA8B1E239D7F008AC9CD /* Elements.json in Resources */ = {isa = PBXBuildFile; fileRef = 83F2CA8A1E239D7F008AC9CD /* Elements.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,11 @@
 		83F2CA791E239C87008AC9CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83F2CA7C1E239C87008AC9CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83F2CA7E1E239C87008AC9CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83F2CA841E239CCD008AC9CD /* PeriodicTableLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodicTableLayout.swift; sourceTree = "<group>"; };
+		83F2CA861E239CEE008AC9CD /* Element.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
+		83F2CA881E239D1C008AC9CD /* ElementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementCell.swift; sourceTree = "<group>"; };
+		83F2CA8A1E239D7F008AC9CD /* Elements.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Elements.json; sourceTree = "<group>"; };
+		83F2CA8C1E23A0AD008AC9CD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +47,7 @@
 		83F2CA661E239C87008AC9CD = {
 			isa = PBXGroup;
 			children = (
+				83F2CA8C1E23A0AD008AC9CD /* README.md */,
 				83F2CA711E239C87008AC9CD /* PeriodicTable */,
 				83F2CA701E239C87008AC9CD /* Products */,
 			);
@@ -56,6 +66,10 @@
 			children = (
 				83F2CA721E239C87008AC9CD /* AppDelegate.swift */,
 				83F2CA741E239C87008AC9CD /* ViewController.swift */,
+				83F2CA841E239CCD008AC9CD /* PeriodicTableLayout.swift */,
+				83F2CA861E239CEE008AC9CD /* Element.swift */,
+				83F2CA881E239D1C008AC9CD /* ElementCell.swift */,
+				83F2CA8A1E239D7F008AC9CD /* Elements.json */,
 				83F2CA761E239C87008AC9CD /* Main.storyboard */,
 				83F2CA791E239C87008AC9CD /* Assets.xcassets */,
 				83F2CA7B1E239C87008AC9CD /* LaunchScreen.storyboard */,
@@ -126,6 +140,7 @@
 			files = (
 				83F2CA7D1E239C87008AC9CD /* LaunchScreen.storyboard in Resources */,
 				83F2CA7A1E239C87008AC9CD /* Assets.xcassets in Resources */,
+				83F2CA8B1E239D7F008AC9CD /* Elements.json in Resources */,
 				83F2CA781E239C87008AC9CD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,7 +152,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83F2CA891E239D1C008AC9CD /* ElementCell.swift in Sources */,
 				83F2CA751E239C87008AC9CD /* ViewController.swift in Sources */,
+				83F2CA851E239CCD008AC9CD /* PeriodicTableLayout.swift in Sources */,
+				83F2CA871E239CEE008AC9CD /* Element.swift in Sources */,
 				83F2CA731E239C87008AC9CD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
