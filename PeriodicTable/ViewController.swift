@@ -35,7 +35,7 @@ extension ViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ElementCell", for: indexPath) as! ElementCell
         let element = elements![indexPath.row]
-        cell.numberLabel.text = "\(element.number)"
+        cell.numberLabel.text = "\(element.atomicNumber)"
         cell.symbolLabel.text = element.symbol
         return cell
     }

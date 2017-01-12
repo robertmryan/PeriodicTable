@@ -9,12 +9,12 @@
 import Foundation
 
 struct Element {
-    let number: Int
+    let atomicNumber: Int
     let symbol: String
     let name: String
     let origin: String
-    let group: Int?
-    let period: Int
+    let group: Int?              // 1-based group number (corresponding to the column in the table), from 1 to 18 (but f-block lanthanides and actinides have no `group` value
+    let period: Int              // 1-based row number (corresponding to the row in the table), from 1 to 7 (note, f-block lanthanides and actinides will be visually represented on separate rows in table)
     let atomicWeight: String
     let density: String
     let melt: String
@@ -24,7 +24,7 @@ struct Element {
     let abundance: String
     
     init(dictionary: [String: Any]) {
-        number       = Int(dictionary["Element"] as! String)!
+        atomicNumber = Int(dictionary["Element"] as! String)!
         symbol       = dictionary["Symbol"] as! String
         name         = dictionary["Name"] as! String
         origin       = dictionary["Origin"] as! String
@@ -39,23 +39,34 @@ struct Element {
         abundance    = dictionary["Abundance"] as! String
     }
     
+    /// A zero-based row number.
+    ///
+    /// This largely corresponds to the 1-based `period`, though the f-block elements
+    /// have been moved down below the main table and have their own rows.
+    
     var row: Int {
-        switch number {
-        case 57 ... 70:
+        switch atomicNumber {
+        case 57 ... 70:             // f-block lan­thanides
             return 8 - 1
-        case 89 ... 102:
+        case 89 ... 102:            // f-block actinides
             return 9 - 1
         default:
             return period - 1
         }
     }
     
+    /// A zero-based column number.
+    ///
+    /// This largely corresponds to the 1-based `group`, though the f-block elements
+    /// have been moved down below the main table and show up, starting under the `group`
+    /// 3 elements.
+    
     var column: Int {
-        switch number {
-        case 57 ... 70:
-            return number - 57 + 2
-        case 89 ... 102:
-            return number - 89 + 2
+        switch atomicNumber {
+        case 57 ... 70:             // f-block lan­thanides
+            return atomicNumber - 57 + 2
+        case 89 ... 102:            // f-block actinides
+            return atomicNumber - 89 + 2
         default:
             return group! - 1
         }

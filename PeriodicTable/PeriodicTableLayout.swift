@@ -63,7 +63,7 @@ class PeriodicTableLayout: UICollectionViewLayout {
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return (collectionView?.dataSource as! ElementDataSource).elements!
             .filter { rect.intersects(self.rectFor($0)) }
-            .map { IndexPath(item: $0.number - 1, section: 0) }
+            .map { IndexPath(item: $0.atomicNumber - 1, section: 0) }
             .map { self.layoutAttributesForItem(at: $0)! }
     }
 }
