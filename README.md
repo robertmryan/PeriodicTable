@@ -10,7 +10,7 @@ In a custom collection view layout, you simply have to specify:
 
 See `PeriodicTableLayout.swift` for an example. Note, you can set `fitTableToCollectionView` if you want it to fit the periodic table within the collection view. Set it to `false` if you want to have fixed sized cells and allow you to scroll around.
 
-![screen snapshot](https://i.stack.imgur.com/riGt7.png)
+![screen snapshot](https://i.stack.imgur.com/SnAWZ.png)
 
 This is not intended as an end-user library, but just a "simple" example of how one might create non-flow collection view layouts. This is for illustrative purposes only. Also, please note that the `Elements.json` was created by cutting and pasting from a Wikipedia page on the elements, and some of the fields (like atomic weight) include footnote numbers that are not part of the numeric value. So, you might want to clean up this JSON if you were to actually use this. Likewise, I just left some of the elements of `Element` as `String` when they really should be numeric, but my intent was not to produce a final app, but rather just to illustrate the idea behind custom collection views.
 
