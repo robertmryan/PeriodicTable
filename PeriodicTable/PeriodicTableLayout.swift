@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol ElementDataSource {
+    var elements: [Element]? { get }
+}
+
 class PeriodicTableLayout: UICollectionViewLayout {
     let rows = 9
     let columns = 18
     var size: CGSize!
     let spacing: CGFloat = 2
+    let fBlockAdditionalSpacing: CGFloat = 5
+    
     let fitTableToCollectionView = true  // if you want it to fit, set to `true`; if you want fixed cell sizes and let you scroll, set to `false`
     
     override func prepare() {
@@ -20,7 +26,7 @@ class PeriodicTableLayout: UICollectionViewLayout {
             let bounds = collectionView!.bounds
             let inset = collectionView!.contentInset
             size = CGSize(width: (bounds.size.width - inset.left - inset.right - CGFloat(columns + 1) * spacing) / CGFloat(columns),
-                          height: (bounds.size.height - inset.top - inset.bottom - CGFloat(rows + 1) * spacing) / CGFloat(rows))
+                          height: (bounds.size.height - inset.top - inset.bottom - CGFloat(rows + 1) * spacing - fBlockAdditionalSpacing) / CGFloat(rows))
         } else {
             size = CGSize(width: 50, height: 50)
         }
@@ -55,7 +61,7 @@ class PeriodicTableLayout: UICollectionViewLayout {
     //    4. Calls the `layoutAttributesForItem` for each of those `IndexPath` references.
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return (collectionView?.dataSource as! ViewController).elements
+        return (collectionView?.dataSource as! ElementDataSource).elements!
             .filter { rect.intersects(self.rectFor($0)) }
             .map { IndexPath(item: $0.number - 1, section: 0) }
             .map { self.layoutAttributesForItem(at: $0)! }
@@ -70,7 +76,7 @@ extension PeriodicTableLayout {
     /// - Returns: The `Element` associated with that cell.
     
     fileprivate func elementAt(_ index: Int) -> Element {
-        return (collectionView?.dataSource as! ViewController).elements[index]
+        return (collectionView?.dataSource as! ElementDataSource).elements![index]
     }
     
     /// The `CGRect` associated with a particular element.
@@ -85,8 +91,12 @@ extension PeriodicTableLayout {
         let row = element.row
         let column = element.column
         
-        let origin = CGPoint(x: CGFloat(column + 1) * spacing + CGFloat(column) * size.width,
-                             y: CGFloat(row + 1)    * spacing + CGFloat(row)    * size.height)
+        let x = CGFloat(column + 1) * spacing + CGFloat(column) * size.width
+        
+        var y = CGFloat(row + 1) * spacing + CGFloat(row) * size.height
+        y += row > 6 ? fBlockAdditionalSpacing : 0.0
+        
+        let origin = CGPoint(x: x, y: y)
         
         return CGRect(origin: origin, size: size)
     }

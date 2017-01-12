@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ViewController: UICollectionViewController {
+class ViewController: UICollectionViewController, ElementDataSource {
     
-    var elements: [Element]!
+    var elements: [Element]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +29,12 @@ class ViewController: UICollectionViewController {
 
 extension ViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return elements.count
+        return elements?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ElementCell", for: indexPath) as! ElementCell
-        let element = elements[indexPath.row]
+        let element = elements![indexPath.row]
         cell.numberLabel.text = "\(element.number)"
         cell.symbolLabel.text = element.symbol
         return cell
